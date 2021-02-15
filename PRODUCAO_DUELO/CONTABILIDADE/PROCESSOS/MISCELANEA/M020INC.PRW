@@ -1,0 +1,51 @@
+#INCLUDE "RWMAKE.CH"
+
+USER FUNCTION M020INC()
+
+LOCAL _CODITEM := SPACE(9)
+
+_CODITEM := "2" + ALLTRIM(SA2->A2_COD) + ALLTRIM(SA2->A2_LOJA)
+
+IF PARAMIXB <> 3
+	
+	if msgyesno("Confirma a inclusao do fornecedor em item contabil ?")
+		
+		DBSELECTAREA("CTD")
+		CTD->(DBSETORDER(1))
+		CTD->(DBGOTOP())
+		
+		IF !CTD->(DBSEEK(XFILIAL("CTD") + _CODITEM))
+			
+			WHILE !RECLOCK("CTD",.T.);ENDDO
+			CTD->CTD_FILIAL 	:= XFILIAL("CTD")
+			CTD->CTD_ITEM		:= "2" + ALLTRIM(SA2->A2_COD) + ALLTRIM(SA2->A2_LOJA)
+			CTD->CTD_CLASSE	:= "2"
+			CTD->CTD_DESC01	:= SA2->A2_NOME
+			CTD->CTD_BLOQ		:= "2"
+			CTD->CTD_DTEXIS	:= CTOD("01/01/1980")
+			CTD->CTD_CLOBRG	:= "2"
+			CTD->CTD_ACCLVL	:= "2"
+			CTD->CTD_ITSUP		:= "2"
+			
+			CTD->(MSUNLOCK())
+			CTD->(DBCOMMIT())
+			
+			DBSELECTAREA("SA2")
+			
+			IF RECLOCK("SA2",.F.)
+				
+				SA2->A2_ICTBC := CTD->CTD_ITEM
+				SA2->A2_ICTBD := CTD->CTD_ITEM
+				
+				msunlock()
+			Endif
+			
+		ENDIF
+		
+	Endif
+	
+ENDIF
+
+DBSELECTAREA("SA2")
+
+RETURN()
