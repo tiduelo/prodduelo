@@ -6,7 +6,7 @@
 ฑฑษออออออออออัออออออออออหอออออออัออออออออออออออออออออหออออออัอออออออออออออปฑฑ
 ฑฑบPrograma  ณMT100LOK     บAutor  ณRAFAEL ALEMIDA   บ Data ณ  20/04/2018 บฑฑ
 ฑฑฬออออออออออุออออออออออสอออออออฯออออออออออออออออออออสออออออฯอออออออออออออนฑฑ
-ฑฑบDesc.     ณPonto de entrada na valida็ใo da linha de Nota Fiscal       บฑฑ
+ฑฑบDesc.     ณPonto de entrada na valida็ใo da linha de Nota Fiscal  **** บฑฑ
 ฑฑบ          ณ Entrada para nใo permitir que uma TES que nใo Mov Estoque  บฑฑ
 ฑฑฬออออออออออุออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออนฑฑ
 ฑฑบUso       ณ MATA103                                                    บฑฑ
