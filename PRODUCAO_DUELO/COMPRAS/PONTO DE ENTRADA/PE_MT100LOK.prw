@@ -22,14 +22,18 @@ User Function MT100LOK()
 
 //////// DECLARANDO AS VARIAVEIS ////////
 Local nPOsNcm := aScan(aHeader,{|x| AllTrim(x[2]) == "D1_TEC"})  //RAFAEL ALMEIDA - SIGACORP (18/01/2016)
+Local nPOsTes := aScan(aHeader,{|x| AllTrim(x[2]) == "D1_TES"})  //RAFAEL ALMEIDA - SIGACORP (18/01/2016)
 Local _cEspecie := cEspecie
 Local _cFormul  := cFormul
 Local lRet := .T.
 Local _cUsrLogin := RetCodUsr()
 Local _cUsrAdm   := SUPERGETMV("US_ADMT103",.F.,"/000000/")
 Local _cMsgInfo  := ""
-Local _cAtvPE := SuperGetMv("US_MT100L",.T.,.T.)// Parametro Logico que valida se o ponto de entrada será utilizado.
-Local _cNcm := ""
+Local _cAtvPE    := SuperGetMv("US_MT100L",.T.,.T.)// Parametro Logico que valida se o ponto de entrada será utilizado.
+Local _lAtvNFS   := SuperGetMv("US_LTENFS",.T.,.T.)// Parametro Logico que valida se o ponto de entrada será utilizado para validar TES de serviços.
+Local _cTesNFS   := SuperGetMv("US_TESNFS",.T.,.T.)// Parametro com a relação de TES para Nota Fiscal de Serviço.
+Local _cNcm      := ""
+Local _cTes      := ""
 
 Local _cCC  := ""
 Local _cCta := ""
@@ -64,6 +68,15 @@ If _cAtvPE
 		MSGInfo("Atenção!!! Para o Tipo de Documento que deseja incluir faz necessário informar a NCM do Produto.")
 	EndIf
 	
+EndIf
+
+If _lAtvNFS
+	_cTes :=   aCols[n][nPOsTes] // A variavel esta recebendo o conteudo do campo onde a linha esta posicionada.
+	If Alltrim(_cEspecie) $ "/NFSE/NFS/" .And. !(Alltrim(_cTesNFS) $ Alltrim(_cTes))
+		lRet := .F.
+		MSGInfo("Atenção!!! Para o Tipo de Documento que deseja incluir faz necessário informar a TES de SERVIÇO.")
+	EndIf
+
 EndIf
 
 If _cAtvCC
