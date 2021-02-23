@@ -200,7 +200,7 @@ If _cAtvDev
 		Endif
 	Endif
 EndIf
-
+/*
 If _cFormul == "S" .And. "SPED"$_cEspecie
 	_cMsgInfo := "Seu perfil não tem permissão para incluir a Nota Fiscal como SPED"+ENTER+ENTER
     _cMsgInfo += "SOLUÇÃO:"+ENTER
@@ -213,5 +213,5 @@ If _cFormul == "S" .And. "SPED"$_cEspecie
         MsgAlert(_cMsgInfo,"SEM PERMISSÃO")
     EndIf
 EndIf
-
+*/
 Return(lReT)
