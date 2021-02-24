@@ -72,7 +72,8 @@ EndIf
 
 If _lAtvNFS
 	_cTes :=   aCols[n][nPOsTes] // A variavel esta recebendo o conteudo do campo onde a linha esta posicionada.
-	If Alltrim(_cEspecie) $ "/NFSE/NFS/" .And. !(Alltrim(_cTesNFS) $ Alltrim(_cTes))
+	//If Alltrim(_cEspecie) $ "/NFSE/NFS/" .And. !(Alltrim(_cTesNFS) $ Alltrim(_cTes)) 
+	If Alltrim(_cEspecie) $ "/NFSE/NFS/" .And. !(Alltrim(_cTes) $ Alltrim(_cTesNFS))
 		lRet := .F.
 		MSGInfo("Atenção!!! Para o Tipo de Documento que deseja incluir faz necessário informar a TES de SERVIÇO.")
 	EndIf
