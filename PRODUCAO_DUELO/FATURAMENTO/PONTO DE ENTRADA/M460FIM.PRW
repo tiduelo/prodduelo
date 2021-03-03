@@ -198,11 +198,11 @@ if AllTrim(FWCodEmp()) == "04"//SM0->M0_codigo == "04"
 					// Calculo com base am aliquota
 					//
 					
-					_nPisBase  := SD2->D2_TOTAL
+					_nPisBase  := SD2->D2_TOTAL - SD2->D2_VALICM
 					_nPisAlq   := SB1->B1_PPIS2
 					_nPisVal   := round( _nPisBase * ( _nPisAlq/100) , 2 )
 					
-					_nCofBase  := SD2->D2_TOTAL
+					_nCofBase  := SD2->D2_TOTAL - SD2->D2_VALICM
 					_nCofAlq   := SB1->B1_PCOFIN2
 					_nCofVal   := round( _nCofBase * ( _nCofAlq/100) , 2 )
 					
