@@ -21,7 +21,8 @@ Local _i := 0
 
 // ALERT("PE M460FIM")
 
-if AllTrim(FWCodEmp()) == "04"//SM0->M0_codigo == "04"
+if AllTrim(FWCodEmp()) == "04" //SM0->M0_codigo == "04"
+ 
 	
 	_aarea := GETAREA()
 	
@@ -368,7 +369,7 @@ if AllTrim(FWCodEmp()) == "04"//SM0->M0_codigo == "04"
 					// Calculo do Pis e Cofins para fora do estado
 					//
 					
-					IF LEFT( SD2->D2_CF , 1 ) == '6'
+					IF LEFT( SD2->D2_CF , 1 ) == '6' 
 						
 						_lAtualCab	:= .t.
 						

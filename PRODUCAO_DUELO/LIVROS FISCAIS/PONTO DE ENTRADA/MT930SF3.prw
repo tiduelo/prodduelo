@@ -3,7 +3,7 @@ User Function MT930SF3()
 return nil
 
 
-if SM0->M0_CODIGO == '04'
+if SM0->M0_CODIGO == '04' 
 	
 	_aarea := GETAREA()
 	

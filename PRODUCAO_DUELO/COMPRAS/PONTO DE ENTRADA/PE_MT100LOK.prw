@@ -65,7 +65,7 @@ If _cAtvPE
 	_cNcm := aCols[n][nPOsNcm] // A variavel esta recebendo o conteudo do campo onde a linha esta posicionada.
 	//If Alltrim(_cEspecie) == "SPED" .And. Empty(_cNcm)
 	If Alltrim(_cEspecie) == "SPED" .And. Empty(_cNcm) 
-		If .not. aCols[i,len(aHeader)+1]
+		If .not. aCols[n,len(aHeader)+1]
 			lRet := .F.
 			MSGInfo("Atenção!!! Para o Tipo de Documento que deseja incluir faz necessário informar a NCM do Produto.")
 		Endif	
@@ -78,7 +78,7 @@ If _lAtvNFS
 	//If Alltrim(_cEspecie) $ "/NFSE/NFS/" .And. !(Alltrim(_cTesNFS) $ Alltrim(_cTes)) 
 	//If Alltrim(_cEspecie) $ "/NFSE/NFS/" .And. !(Alltrim(_cTes) $ Alltrim(_cTesNFS))
 	If Alltrim(_cEspecie) $ "/NFSE/NFS/" .And. !(Alltrim(_cTes) $ Alltrim(_cTesNFS))  
-		If.not. aCols[i,len(aHeader)+1]
+		If.not. aCols[n,len(aHeader)+1]
 			lRet := .F.
 			MSGInfo("Atenção!!! Para o Tipo de Documento que deseja incluir faz necessário informar a TES de SERVIÇO.")
 		Endif

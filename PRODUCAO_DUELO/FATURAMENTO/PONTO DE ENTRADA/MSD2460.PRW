@@ -135,7 +135,7 @@ IF ( SF4->F4_CODIGO == SD2->D2_TES ) .AND. ALLTRIM(SF4->F4_PISCOF) == "3"
 					// Calculo do Pis e Cofins para fora do estado
 					//
 					
-					IF LEFT( SD2->D2_CF , 1 ) == '6'
+					IF LEFT( SD2->D2_CF , 1 ) == '6' 
 						
 						_nPisBase  := SD2->D2_TOTAL
 						_nPisAlq   := SD2->D2_ALQIMP6
