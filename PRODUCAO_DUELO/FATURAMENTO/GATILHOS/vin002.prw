@@ -41,6 +41,10 @@ cconta := "         "
 if SM0->M0_CODIGO == "04"
     if sf4->f4_cf == '5102'
          cconta := "3420201"
+    endif
+    /*CFOP DE VENDA ANTECIPADA - CONTA VENDA ANTECIPADA DUELO*/
+    if substr(sf4->f4_cf,2,3) == '116'
+         cconta := "341010101"
     endif     
 if SM0->M0_CODIGO == "04" .or.  SM0->M0_CODIGO == "05"
         if substr(sf4->f4_cf,2,3)=="101"
