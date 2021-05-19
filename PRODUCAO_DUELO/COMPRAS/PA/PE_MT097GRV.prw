@@ -155,6 +155,17 @@ User Function MT120OK()
 	Local nRat	     	:= GdFieldPos( "C7_RATEIO" 	)
 	Local _aItens 		:= {}
 	Local _cMsgm        := ""
+	Local nX            := 0 
+	Local _nTotPC       := 0
+	Local nPosTot       := aScan(aHeader,{|x| AllTrim(x[2]) == 'C7_TOTAL'})
+	Local _nPecAdnt     := 0
+	Local _aTp8Gp2      := {}
+	Local _cTp8Gp2      := ""
+	Local _cTp8Gp1      := ""
+	Local _n22PosArra   := 0
+	Local _n21PosArra   := 0
+	Local _cMsg         := ""
+	
 
 
 
@@ -198,8 +209,69 @@ User Function MT120OK()
 		EndIf
 	EndIf
 
+	If INCLUI .or. ALTERA
+		If _cCondPA == "1"
+			_nPecAdnt := ((_nVlrPA * 100)/aValores[6])			
+			_cTipCond   := GetAdvFVal("SE4", "E4_TIPO",xFilial("SE4")+CCONDICAO,1)
 
-Return(_lRet)
+   			If  _cTipCond == "1" //Cond. Pagto. TIPO 1 - indica o deslocamento em dias a partir da data base
+
+		        _aQtdPacl   := Strtokarr (GetAdvFVal("SE4", "E4_COND",xFilial("SE4")+CCONDICAO,1),",")
+				_nQtdPacl   := len(_aQtdPacl)
+				_nPecParcl  := (100/_nQtdPacl)
+
+				If !(_nPecParcl == _nPecAdnt)
+					_lRet := .F.
+					_cMsg := "ATENÇÃO! O valor da PA difere do percentual da primeira parcela"+CRLF
+					_cMsg += "da condição de pagamento."+CRLF
+					_cMsg += "Por favor "+CRLF
+					_cMsg += "Utilize a condição de pagamento correta."
+					MsgBox(_cMsg,"Atenção","STOP")
+				EndIf				
+
+    		ElseIf _cTipCond == "2"     
+		    ElseIf _cTipCond == "3"    
+		    ElseIf _cTipCond == "4"    
+    		ElseIf _cTipCond == "5"//Cond. Pagto. TIPO 5 - representa a carência, a quantidade de duplicatas e os vencimentos, nesta ordem, representado por valores numéricos
+
+				_aQtdPacl   := Strtokarr (GetAdvFVal("SE4", "E4_COND",xFilial("SE4")+PARAMIXB[3],1),",")
+				_nPecParcl  := (100/Val(_aQtdPacl[2]))
+
+				If !(_nPecParcl == _nPecAdnt)
+					_lRet := .F.
+					_cMsg := "ATENÇÃO! O valor da PA difere do percentual da primeira parcela"+CRLF
+					_cMsg += "da condição de pagamento."+CRLF
+					_cMsg += "Por favor "+CRLF
+					_cMsg += "Utilize a condição de pagamento correta."
+					MsgBox(_cMsg,"Atenção","STOP")
+				EndIf
+
+    		ElseIf _cTipCond == "6"
+    		ElseIf _cTipCond == "7"
+    		ElseIf _cTipCond == "8"
+
+				_cTp8Gp1    := SubStr(GetAdvFVal("SE4", "E4_COND",xFilial("SE4")+CCONDICAO,1),2)
+		        _n21PosArra := AT( "[", _cTp8Gp1 )
+		        _n22PosArra := RAt("]",_cTp8Gp1) 
+		        _cTp8Gp2    := SubStr( _cTp8Gp1, (_n21PosArra+1) , ((_n22PosArra-1) - _n21PosArra))
+		        _aTp8Gp2    := Strtokarr (_cTp8Gp2,",") 
+
+				If !(Val(_aTp8Gp2[1]) == _nPecAdnt)
+					_lRet := .F.
+					_cMsg := "ATENÇÃO! O valor da PA difere do percentual da primeira parcela"+CRLF
+					_cMsg += "da condição de pagamento."+CRLF
+					_cMsg += "Por favor "+CRLF
+					_cMsg += "Utilize a condição de pagamento correta."
+					MsgBox(_cMsg,"Atenção","STOP")
+				EndIf
+
+    		ElseIf _cTipCond == "9"
+    		EndIf 
+
+		EndIf
+
+	EndIf
+Return(_lRet) 
 
 
 /*Utilizar este ponto para gravar o campo adicionado no cabeçalho do pedido

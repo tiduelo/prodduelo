@@ -37,6 +37,14 @@ Local _nResParc   := 0
 Local _nVlrParc   := 0
 Local _nH         := 0
 Local _dDt1Parc   := CtoD("  /  /  ")
+Local _n11PosArra := 0
+Local _cTp8Gp1    := ""
+Local _aTp8Gp1    := {}
+Local _cTp8Gp1    := ""
+Local _n21PosArra := 0
+Local _n22PosArra := 0
+Local _cTp8Gp2    := ""
+Local _aTp8Gp2    := {} 
 
 /*
 PARAMIXB[1] - Array - Array com os títulos (aColsSE2)
@@ -101,6 +109,17 @@ If _cCondAnt == "1"
     ElseIf _cTipCond == "7"
     
     ElseIf _cTipCond == "8"
+        _n11PosArra := (AT( "]", GetAdvFVal("SE4", "E4_COND",xFilial("SE4")+PARAMIXB[3],1))-2)
+        _cTp8Gp1    := SubStr(GetAdvFVal("SE4", "E4_COND",xFilial("SE4")+PARAMIXB[3],1),2,_n11PosArra)
+        _aTp8Gp1    := Strtokarr (_cTp8Gp1,",")
+
+        _cTp8Gp1    := SubStr(GetAdvFVal("SE4", "E4_COND",xFilial("SE4")+PARAMIXB[3],1),2)
+        _n21PosArra := AT( "[", _cTp8Gp1 )
+        _n22PosArra := RAt("]",_cTp8Gp1) //(Len(Alltrim(GetAdvFVal("SE4", "E4_COND",xFilial("SE4")+PARAMIXB[3],1)))-2)
+        _cTp8Gp2    := SubStr( _cTp8Gp1, (_n21PosArra+1) , ((_n22PosArra-1) - _n21PosArra))
+        _aTp8Gp2    := Strtokarr (_cTp8Gp2,",")     
+        
+
     
     ElseIf _cTipCond == "9"
     
