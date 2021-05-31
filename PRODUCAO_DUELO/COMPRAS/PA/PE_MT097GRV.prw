@@ -235,7 +235,7 @@ User Function MT120OK()
 		    ElseIf _cTipCond == "4"    
     		ElseIf _cTipCond == "5"//Cond. Pagto. TIPO 5 - representa a carência, a quantidade de duplicatas e os vencimentos, nesta ordem, representado por valores numéricos
 
-				_aQtdPacl   := Strtokarr (GetAdvFVal("SE4", "E4_COND",xFilial("SE4")+PARAMIXB[3],1),",")
+				_aQtdPacl   := Strtokarr (GetAdvFVal("SE4", "E4_COND",xFilial("SE4")+CCONDICAO,1),",")
 				_nPecParcl  := (100/Val(_aQtdPacl[2]))
 
 				If !(_nPecParcl == _nPecAdnt)
