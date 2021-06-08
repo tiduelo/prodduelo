@@ -9,19 +9,19 @@
 */
 #INCLUDE "rwmake.ch"
 #INCLUDE "PROTHEUS.CH"
+#include "topconn.ch"
 
 //
 User Function F650VAR()
 //
 
-/*
+
 Local _aArea    := GetArea()
 Local _cLinha   := PARAMIXB[01][14]
 Local _cTitulo  := ""
 Local _cEspecie := ""
 Local _cFuncao  := FunName()
 Local _cBanco   := ""
-*/
 Local _nVlrTit  := 0
 
 
@@ -181,7 +181,7 @@ If MV_PAR07 == 1
 		
 		
 	EndIf
-Else
+ElseIf MV_PAR07 == 2
 	If MV_PAR03 == "033"
 	
 		_cNumTit := PARAMIXB[1][1]
@@ -236,6 +236,50 @@ Else
 		nMulta    := 0
 		nValCred  := 0
 		//nValIof := 0
+		dDataCred := dDataBase
+		dBaixa	  := StoD(_cDtBaixa)
+	EndIf
+
+	If MV_PAR03 == "001"
+
+		_cNumTit := PARAMIXB[1][1]
+		_cPrxTit := SubStr(PARAMIXB[1][14],55,3)
+		_cParTit := SubStr(PARAMIXB[1][14],69,1)
+		 _cDtBaixa  := SubStr(PARAMIXB[1][14],149,4) + SubStr(PARAMIXB[1][14],147,2) + SubStr(PARAMIXB[1][14],145,2)
+		_cTipTit := cTipo
+		_cIdCNAB := ""
+		_cNumBco := ""
+
+		cQry := " "
+		cQry += " 	SELECT E2_IDCNAB, E2_NUMBCO, E2_FORNECE, E2_LOJA, E2_NOMFOR, E2_VALOR, E2_NUM	"	
+		cQry += " 	FROM "+ RETSQLNAME("SE2")+"  "
+		cQry += " 	WHERE D_E_L_E_T_ = ''	"
+		cQry += " 		AND E2_FILIAL    = '"+xfilial("SE2")  +"' "
+		cQry += " 		AND E2_IDCNAB       = '"+ Alltrim(PARAMIXB[1][1]) +"'	"
+		cQry += " 		AND E2_PORTADO   = '001'	"
+		cQry += " 		AND E2_TIPO      = '"+ Alltrim(_cTipTit) +"'	"
+		dbUseArea( .T. , "TOPCONN" , TcGenQry(,,cQry) , "TOCE2" , .T. , .F.)
+	
+		DBSelectArea("TOCE2")
+		TOCE2->(DbGoTop())
+		While !TOCE2->(Eof())
+			_cIdCNAB := TOCE2->E2_IDCNAB
+			_cNumBco := TOCE2->E2_NUM
+			_cCNABCodCli := TOCE2->E2_FORNECE
+			_cCNABLojCli := TOCE2->E2_LOJA
+			_cCNABNomCli := TOCE2->E2_NOMFOR
+			_nVlrTit     := TOCE2->E2_VALOR		
+			TOCE2->(DbSkip())
+		EndDo
+		TOCE2->( DBCloseArea())
+
+		cNumTit   := _cIdCNAB
+		cNsNum    := _cNumBco
+		cTipo     := Alltrim(_cTipTit)
+		nDepres   := 0
+		nDescont  := 0
+		nMulta    := 0
+		nValCred  := 0
 		dDataCred := dDataBase
 		dBaixa	  := StoD(_cDtBaixa)
 	EndIf

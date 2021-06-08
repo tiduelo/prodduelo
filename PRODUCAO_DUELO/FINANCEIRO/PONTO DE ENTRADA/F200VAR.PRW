@@ -7,6 +7,8 @@
 // +-----------+-------------------------------------------------+---------------------+
 
 #INCLUDE "rwmake.ch"
+#INCLUDE "PROTHEUS.CH"
+#include "topconn.ch"
 
 ///////////////////////
 User Function F200VAR()
