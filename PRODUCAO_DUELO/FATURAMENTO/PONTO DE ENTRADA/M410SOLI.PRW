@@ -84,9 +84,9 @@ User Function M410SOLI()
 		If _cSb1Grup $ '0204|0206'   
 
 			If _cEst == 'PA'
-				_cSeqExc := "003"
+				_cSeqExc := "001" // "003" AJUSTADO RAFAEL CRUZ 18/06/2021
 			ElseIf _cEst == "AP"
-				_cSeqExc := "004"
+				_cSeqExc := "002" // "004"  AJUSTADO RAFAEL CRUZ 18/06/2021
 			Endif
 
 		ElseIf  _cSb1Grup $ '0203|0205'   
@@ -234,10 +234,10 @@ User Function M410SOLI()
 		*/
 		if _cEst == "PA"
 			if !Empty(_cEmpPautST) .And. cNumEmp$Alltrim(_cEmpPautST)	
-				if _lSB1PautST  .And. _nPautST > 0	.And. _cSb1Grup $ '0204'
+				if (_lSB1PautST  .And. _nPautST > 0	.And. _cSb1Grup $ '0204') .or. Alltrim(SB1->B1_GRTRIB) $ '004'
 					_nBaseRet:= Round(_nPautST * _QTDEMP,2)
 					//_nValRet := Round(_nPautST * _nAliqIcm / 100, 2) 
-					_nValRet := Round(_QTDEMP*(_nPautST * _nAliqIcm / 100), 2)				
+					_nValRet := Round(_QTDEMP*(_nPautST * _nAliqIcm / 100), 2)					
 				EndIf
 			EndIf
 		EndIf	

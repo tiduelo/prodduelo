@@ -1,17 +1,17 @@
 #Include "RwMake.Ch"
 User Function M460SOLI()
-/*ÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜ
-±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
-±±ÉÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍ»±±
-±±ºPrograma  ³M460SOLI  ºAutor  ³Lucio Graim-Belém   º Data ³  25/02/02   º±±
-±±ÌÍÍÍÍÍÍÍÍÍÍØÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍ¹±±
-±±ºDesc.     ³ Modificará o valor da substituição Tributária de acordo    º±±
-±±º          ³ com o TES                                                  º±±
-±±ÌÍÍÍÍÍÍÍÍÍÍØÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹±±
-±±ºUso       ³ Vinho Duelo                                                º±±
-±±ÈÍÍÍÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼±±
-±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
-ßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßß*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½
+ï¿½ï¿½ï¿½Programa  ï¿½M460SOLI  ï¿½Autor  ï¿½Lucio Graim-Belï¿½m   ï¿½ Data ï¿½  25/02/02   ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¹ï¿½ï¿½
+ï¿½ï¿½ï¿½Desc.     ï¿½ Modificarï¿½ o valor da substituiï¿½ï¿½o Tributï¿½ria de acordo    ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½          ï¿½ com o TES                                                  ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¹ï¿½ï¿½
+ï¿½ï¿½ï¿½Uso       ï¿½ Vinho Duelo                                                ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 SetPrvt("_xProduto, _aIcmRet, _nSB1Ord, _nSB1Reg, _nAliqIpi, _nB1margem, _nSF7Ord")
 SetPrvt("_nSF7Reg, _nAliqIcm, _nAliqExt, _nSF4Ord, _nSF4Reg, _cIncide, _nRedSub")
 SetPrvt("_nPrcVen, _nQtdLib, _nValMerc, _nValTot, _nValIcm, _nBaseRet, _nValRet, _nValSubs")
@@ -28,17 +28,17 @@ _nB1margem  :=  0
 _nBaseRet	:=  0
 _cEst       := "PA" // estado destino do produto
 _cSeqExc    := "" // sequencia na tabela de excessao fiscal
-_nAliqIcm   := GETMV("MV_ICMPAD") // Retorna o Icm Padrão
+_nAliqIcm   := GETMV("MV_ICMPAD") // Retorna o Icm Padrï¿½o
 _nAliqExt   := 12
 _cSb1Grup	:= Alltrim(Posicione("SB1",1,xFilial("SB1")+_xProduto,"B1_GRUPO"))
 _nSufICMS	:= 0.00
 _cSql			:= ""
 _VlrPrdFrt	:= 0.00
 _lSuframa	:= .F.
-_nPDc1583   := Posicione("SB1",1,xFilial("SB1")+_xProduto,"B1_DC1583") //Rafael Almeida - SIGACORP (29/03/2016) atender o Decreto Nº 1583
+_nPDc1583   := Posicione("SB1",1,xFilial("SB1")+_xProduto,"B1_DC1583") //Rafael Almeida - SIGACORP (29/03/2016) atender o Decreto Nï¿½ 1583
 _nPautST    := Posicione("SB1",1,xFilial("SB1")+_xProduto,"B1_PAUTST") //Rafael Almeida - SIGACORP (23/11/2016) Nova Pauta para refrigerante
-_lDc1583    := GETMV("US_DEC1583")  //Rafael Almeida - SIGACORP (29/03/2016) atender o Decreto Nº 1583
-_cEmpFil    := GETMV("US_EMPFIL1")  //Rafael Almeida - SIGACORP (29/03/2016) atender o Decreto Nº 1583
+_lDc1583    := GETMV("US_DEC1583")  //Rafael Almeida - SIGACORP (29/03/2016) atender o Decreto Nï¿½ 1583
+_cEmpFil    := GETMV("US_EMPFIL1")  //Rafael Almeida - SIGACORP (29/03/2016) atender o Decreto Nï¿½ 1583
 _cEmpPautST := GETMV("US_EMPPTST")  //Rafael Almeida - SIGACORP (23/11/2016) Referente a empresa que se enquadrada na Pauta ST para refrigerantes.
 _lSB1PautST := GETMV("US_SB1PTST")  //Rafael Almeida - SIGACORP (23/11/2016) Referente a empresa que se enquadrada na Pauta ST para refrigerantes ativa ou desativa a rotina.
 
@@ -74,7 +74,7 @@ IF dbSeek(xFilial("SA1")+SC5->C5_CLIENTE+SC5->C5_LOJACLI)
 	_cEst := upper(alltrim(SA1->A1_EST))
 EndIf
 
-IF SC5->C5_TIPOCLI == "S" .and. _cEst $ "PA/AP"       //Testa se o cliente é do estado do Para ou Amapa
+IF SC5->C5_TIPOCLI == "S" .and. _cEst $ "PA/AP"       //Testa se o cliente ï¿½ do estado do Para ou Amapa
 	
 	/*If _cSb1Grup $ '0203' // Energeticos
 		
@@ -87,12 +87,12 @@ IF SC5->C5_TIPOCLI == "S" .and. _cEst $ "PA/AP"       //Testa se o cliente é do 
 	Else*/If _cSb1Grup $ '0204|0206'   // Refrigerante ok // Refrigerante Cerpa
 		
 		If _cEst == 'PA'
-			_cSeqExc := "003"
+			_cSeqExc := "001" // "003" AJUSTADO RAFAEL CRUZ 18/06/2021
 		ElseIf _cEst == "AP"
-			_cSeqExc := "004"
+			_cSeqExc := "002" // "004"  AJUSTADO RAFAEL CRUZ 18/06/2021
 		Endif
 		
-	ElseIf  _cSb1Grup $ '0203|0205'   // Suco Tampico E CHÁ
+	ElseIf  _cSb1Grup $ '0203|0205'   // Suco Tampico E CHï¿½
 		
 		If _cEst == 'PA'
 			_cSeqExc := "001"
@@ -110,7 +110,7 @@ IF SC5->C5_TIPOCLI == "S" .and. _cEst $ "PA/AP"       //Testa se o cliente é do 
 		
 	Endif
 	
-	dbSelectArea("SB1")                             // Solidário
+	dbSelectArea("SB1")                             // Solidï¿½rio
 	_nSB1Ord := IndexOrd()
 	_nSB1Reg := RecNo()
 	
@@ -139,7 +139,7 @@ IF SC5->C5_TIPOCLI == "S" .and. _cEst $ "PA/AP"       //Testa se o cliente é do 
 		
 		// Busca no arquivo de excssao fiscal
 		IF !Empty(SB1->B1_GRTRIB) .And. dbSeek(xFilial("SF7") + PADR(SB1->B1_GRTRIB,6) + _cGrpCli + _cSeqExc)
-			_nAliqIcm  := SF7->F7_ALIQINT        // tações aquele ao qual o produto
+			_nAliqIcm  := SF7->F7_ALIQINT        // taï¿½ï¿½es aquele ao qual o produto
 			_nAliqExt  := SF7->F7_ALIQEXT        // se enquadra e retorna valor do ICM
 			_nB1margem := iif(SF7->F7_MARGEM > 0 , SF7->F7_MARGEM, _nB1margem )
 		ENDIF
@@ -163,9 +163,9 @@ IF SC5->C5_TIPOCLI == "S" .and. _cEst $ "PA/AP"       //Testa se o cliente é do 
 	_cIncide := ""
 	_nRedSub := 0
 	
-	IF dbSeek(xFilial("SF4")+SC6->C6_TES)  // Verifica se o TES possui incidência
+	IF dbSeek(xFilial("SF4")+SC6->C6_TES)  // Verifica se o TES possui incidï¿½ncia
 		_cIncide := SF4->F4_INCIDE         // de IPI na base do ICM e se existe re
-		_nRedSub := SF4->F4_REDSUB         // ducao do substituto tributário
+		_nRedSub := SF4->F4_REDSUB         // ducao do substituto tributï¿½rio
 	ENDIF
 	
 	//Modificado por Dias 28.03.2012 Verificar se a Tes Calcula IPI
@@ -278,7 +278,7 @@ IF SC5->C5_TIPOCLI == "S" .and. _cEst $ "PA/AP"       //Testa se o cliente é do 
 		_VlrPrdFrt := (SC5->C5_FRETE/Val(SC5->C5_PEDEXP)) * _nQtdLib
 		
 		//Abate de Base o Valor do ICMS SUFRAMA
-		_nBaseRet -= 0 // _nCrePre  - alterado em 14/07/2015 a pedido da Controladoria para nao abater o ICMS descontado da base da Subst. Tributária
+		_nBaseRet -= 0 // _nCrePre  - alterado em 14/07/2015 a pedido da Controladoria para nao abater o ICMS descontado da base da Subst. Tributï¿½ria
 		
 		//Acrescenta o Valor do Frete na Base
 		_nBaseRet +=_VlrPrdFrt
@@ -294,14 +294,14 @@ IF SC5->C5_TIPOCLI == "S" .and. _cEst $ "PA/AP"       //Testa se o cliente é do 
 |=========================================================|
 |Autor: Rafael Almeida - SIGACORP  						  |
 |Data: 23/11/2016										  |
-|Descrição: Ira usar nova base de calculo conforme o      |
+|Descriï¿½ï¿½o: Ira usar nova base de calculo conforme o      |
 |           novo decreto para refrigerante                |
 |Usado: Durate o pedido de venda.						  |
 |=========================================================|
 */
 	if _cEst == "PA"
 		if !Empty(_cEmpPautST) .And. cNumEmp$Alltrim(_cEmpPautST)	
-			if _lSB1PautST  .And. _nPautST > 0	.And. _cSb1Grup $ '0204'
+			if _lSB1PautST  .And. _nPautST > 0	.And. _cSb1Grup $ '0204' .or. Alltrim(SB1->B1_GRTRIB) $ '004'
 				_nBaseRet := Round(_nPautST * SC6->C6_QTDEMP,2)
 				//_nValRet  := Round(_nPautST * _nAliqIcm / 100, 2)
 				_nValRet  := Round(SC6->C6_QTDEMP*(_nPautST * _nAliqIcm / 100), 2)				
@@ -319,8 +319,8 @@ IF SC5->C5_TIPOCLI == "S" .and. _cEst $ "PA/AP"       //Testa se o cliente é do 
 |=========================================================|
 |Autor: Rafael Almeida - SIGACORP  						  |
 |Data: 29/07/2016										  |
-|Descrição: Ira usar nova base de calculo conforme o      |
-|           decreto Nº 1583                               |
+|Descriï¿½ï¿½o: Ira usar nova base de calculo conforme o      |
+|           decreto Nï¿½ 1583                               |
 |Usado: Durate o pedido de venda.						  |
 |=========================================================|
 */
@@ -331,7 +331,7 @@ IF SC5->C5_TIPOCLI == "S" .and. _cEst $ "PA/AP"       //Testa se o cliente é do 
 			EndIf
 		EndIf
 	EndIf	
-// FIM - Rafael Almeida - SIGACORP (DECRETO Nº 1583)
+// FIM - Rafael Almeida - SIGACORP (DECRETO Nï¿½ 1583)
 
 
 	_nValSubs:= _nValRet - _nCrePre
@@ -348,7 +348,7 @@ IF SC5->C5_TIPOCLI == "S" .and. _cEst $ "PA/AP"       //Testa se o cliente é do 
 	//ALERT("Base subst: "+str(_nBaseRet,10,2))
 	//ALERT("Valor subst: "+str(_nValSubs,10,2))
 	
-	//IF _nRedSub = 0 // Recalcula o valor do substituto tributário
+	//IF _nRedSub = 0 // Recalcula o valor do substituto tributï¿½rio
 	//_nValSubs := _nValSubs - _nValIcm
 	//EndIf
 	
