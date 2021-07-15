@@ -92,6 +92,7 @@ ElseIf MV_PAR06 == "001"
 	_cIdCNAB := ""
 	_cNumBco := ""
 	_nVlrTit  := 0
+	_cDtBaixa := SubStr(PARAMIXB[1][16],176,2)+"/"+SubStr(PARAMIXB[1][16],178,2)+"/"+SubStr(PARAMIXB[1][16],180,2)
 	
 	cQry := " "
 	cQry += " 	SELECT E1_IDCNAB, E1_NUMBCO, E1_CLIENTE, E1_LOJA, E1_NOMCLI, E1_VALOR	"
@@ -130,10 +131,12 @@ ElseIf MV_PAR06 == "001"
 	//nDespes   := 0
 	//nDescont  := 0
 	//nAbatim   := 0 
-	//nJuros	  := 0
+	nJuros	  := Val( SubStr(PARAMIXB[1][16],267,11)+"."+ SubStr(PARAMIXB[1][16],278,2))
 	//nMulta    := 0
 	//nVaLOutrD := 0
-	//nValIof   := 0	
+	//nValIof   := 0
+	dDataCred	  := dDataBase	
+	dBaixa	      := CtoD(_cDtBaixa)
 
 ElseIf MV_PAR06 == "341" 
 

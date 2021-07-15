@@ -83,7 +83,7 @@ If MV_PAR07 == 1
 		//nValIof   := 0
 		dDataCred	  := dDataBase
 		dBaixa	      := StoD(_cDtBaixa)
-	ElseIf MV_PAR03 == "001"
+	ElseIf MV_PAR03 == "001" // .AND. MV_PAR08 == 2
 		
 		_cNumTit := PadL(SubStr(PARAMIXB[1][14],120,6),9,"0")
 		_cPrxTit := SubStr(PARAMIXB[1][14],117,3)
@@ -91,6 +91,7 @@ If MV_PAR07 == 1
 		_cTipTit := "NF"
 		_cIdCNAB := ""
 		_cNumBco := ""
+		_cDtBaixa := SubStr(PARAMIXB[1][14],176,2)+"/"+SubStr(PARAMIXB[1][14],178,2)+"/"+SubStr(PARAMIXB[1][14],180,2)
 		
 		cQry := " "
 		cQry += " 	SELECT E1_IDCNAB, E1_NUMBCO	"
@@ -124,10 +125,12 @@ If MV_PAR07 == 1
 		nDespes   := 0
 		nDescont  := 0
 		nAbatim   := 0
-		nJuros	  := 0
 		nMulta    := 0
 		nVaLOutrD := 0
 		nValIof   := 0
+		nJuros	  :=  Val( SubStr(PARAMIXB[1][14],267,11)+"."+ SubStr(PARAMIXB[1][14],278,2))
+		dDataCred	  := dDataBase	
+		dBaixa	      := CtoD(_cDtBaixa)
 		//	dCred	  := MV_PAR10//Data Recebimento
 		//	dBaixa	  := MV_PAR09//Data Movimentação
 		
