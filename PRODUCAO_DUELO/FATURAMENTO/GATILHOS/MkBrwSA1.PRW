@@ -41,6 +41,8 @@ AADD(aCpos, "A1_COD" )
 AADD(aCpos, "A1_LOJA" )
 AADD(aCpos, "A1_VEND" )
 AADD(aCpos, "A1_ROTA" )
+AADD(aCpos, "A1_ZONA" )
+AADD(aCpos, "A1_FREVIS" )
 AADD(aCpos, "A1_TIPO" )
 dbSelectArea("SX3")
 dbSetOrder(2)
@@ -120,7 +122,9 @@ Local cGet2 := Space(4)
 Local oGet3
 Local cGet3 := Space(40)
 Local oGet4
+Local oGet5
 Local cGet4 := Space(4)
+Local cGet5 := Space(1)
 Local oRadMenu1
 Local nRadMenu1 := 0
 Local _cSeqDA7  := ""
@@ -133,6 +137,7 @@ Local oSay3
 Local oSay4
 Local oSay6
 Local oSay5
+Local oSay7
 Local oSButton1
 Local oSButton2
 Private nOpca := .F.
@@ -153,27 +158,29 @@ Enddo
 
 IF Len(aRecSel) > 0
 	
-	DEFINE MSDIALOG oDlg TITLE "Roteirização Cliente" FROM 000, 000  TO 330, 700 COLORS 0, 16777215 PIXEL
+	DEFINE MSDIALOG oDlg TITLE "Roteirização Cliente" FROM 000, 000  TO 430, 700 COLORS 0, 16777215 PIXEL
 	
-	@ 002, 001 GROUP oGroup1 TO 149, 349 OF oDlg COLOR 0, 16777215 PIXEL
+	@ 002, 001 GROUP oGroup1 TO 200, 347 OF oDlg COLOR 0, 16777215 PIXEL
 	@ 014, 004 SAY oSay1 PROMPT "Essa rotina ira realizar a troca das rotas ou dos vendedores para os clientes, afim de agilizar" SIZE 339, 012 OF oDlg FONT oFont1 COLORS 16711680, 16777215 PIXEL
 	@ 025, 004 SAY oSay2 PROMPT "a manutenção da roteirização." SIZE 237, 010 OF oDlg FONT oFont1 COLORS 16711680, 16777215 PIXEL
-	@ 041, 004 GROUP oGroup2 TO 088, 343 OF oDlg COLOR 0, 16777215 PIXEL
+	@ 041, 004 GROUP oGroup2 TO 120, 340 OF oDlg COLOR 0, 16777215 PIXEL
 	@ 048, 007 SAY oSay3 PROMPT "Código Vendedor:" SIZE 067, 010 OF oDlg FONT oFont2 COLORS 255, 16777215 PIXEL
 	@ 048, 122 SAY oSay4 PROMPT "Código Rota:" SIZE 046, 009 OF oDlg FONT oFont2 COLORS 255, 16777215 PIXEL
 	@ 048, 232 SAY oSay6 PROMPT "Código Zona:" SIZE 067, 009 OF oDlg FONT oFont2 COLORS 255, 16777215 PIXEL	
 	@ 071, 007 SAY oSay5 PROMPT "Nome Vendedor:" SIZE 061, 007 OF oDlg FONT oFont2 COLORS 255, 16777215 PIXEL
+	@ 092, 007 SAY oSay7 PROMPT "Freq. Visita:" SIZE 061, 007 OF oDlg FONT oFont2 COLORS 255, 16777215 PIXEL
 	@ 047, 071 MSGET oGet1 VAR cGet1 F3 "SA3ROT" SIZE 043, 011 VALID (U_lVldVend(cGet1) .And. !Empty(cGet1)) OF oDlg COLORS 0, 16777215 PIXEL
 	@ 047, 170 MSGET oGet2 VAR cGet2  SIZE 056, 011 VALID (U_lVldRota(cGet1,cGet2))OF oDlg COLORS 0, 16777215 PIXEL
 	@ 047, 280 MSGET oGet4 VAR cGet4  SIZE 056, 011 VALID (U_lVldZona(cGet1,cGet2,cGet4))OF oDlg COLORS 0, 16777215 PIXEL	
 	@ 071, 070 MSGET oGet3 VAR cGet3 := SubStr(GetAdvFVal("SA3", "A3_NOME",xFilial("SA3")+cGet1,1),1,30)SIZE 265, 011 OF oDlg COLORS 0, 16777215 PIXEL When .F.
-	@ 091, 004 GROUP oGroup3 TO 145, 344 PROMPT "  Atualizar  " OF oDlg COLOR 16711680, 16777215 PIXEL
-	@ 103, 023 RADIO oRadMenu1 VAR nRadMenu1 ITEMS "&Vendedor","&Rota","&Vende && Rota","&Zona && Vende && Rota" SIZE 103, 027  OF oDlg COLOR 255, 16777215 PIXEL
-	DEFINE SBUTTON oSButton1 FROM 152, 290 TYPE 01 ACTION (nOpca := .T.,oDlg:End()) OF oDlg ENABLE
-	DEFINE SBUTTON oSButton2 FROM 152, 318 TYPE 02 ACTION (nOpca := .F.,oDlg:End()) OF oDlg ENABLE
+    @ 092, 071 MSCOMBOBOX oGet5 VAR cGet5 ITEMS {" ", "S - Semanal","P - Quinzenal (Dias Pares)","M - Mensal","I - Quinzenal (Dias Impares)"} SIZE 072, 010 OF oDlg COLORS 0, 16777215 PIXEL	
+	@ 130, 004 GROUP oGroup3 TO 195, 340 PROMPT "  Atualizar  " OF oDlg COLOR 16711680, 16777215 PIXEL
+	@ 135, 023 RADIO oRadMenu1 VAR nRadMenu1 ITEMS "&Vendedor","&Rota","&Vende && Rota","&Zona && Vende && Rota && Freq.Visita","&Freq.Visita" SIZE 200, 027  OF oDlg COLOR 255, 16777215 PIXEL
+	DEFINE SBUTTON oSButton1 FROM 201, 290 TYPE 01 ACTION (nOpca := .T.,oDlg:End()) OF oDlg ENABLE
+	DEFINE SBUTTON oSButton2 FROM 201, 318 TYPE 02 ACTION (nOpca := .F.,oDlg:End()) OF oDlg ENABLE
 	
 	
-	ACTIVATE MSDIALOG oDlg CENTERED VALID U_lVldOpc(nRadMenu1)
+	ACTIVATE MSDIALOG oDlg CENTERED VALID U_lVldOpc(nRadMenu1, cGet5 )
 	
 	
 	If nOpca
@@ -221,6 +228,7 @@ IF Len(aRecSel) > 0
 					MSUNLOCK()
 				EndIf
 				
+
 				dbSelectArea("DA7")
 				dbSetOrder(2)
 				If dbSeek(xFilial("DA7") + aRecSel[nX][2]  + aRecSel[nX][3] + _ZonA + _RotA )								
@@ -299,8 +307,10 @@ IF Len(aRecSel) > 0
 				dbSetOrder(1)
 				If dbSeek(xFilial("SA1") + aRecSel[nX][2]  + aRecSel[nX][3] )
 					RECLOCK("SA1",.F.)
-					SA1->A1_ROTA   := cGet2
-					SA1->A1_VEND   := cGet1					
+					SA1->A1_ROTA    := cGet2
+					SA1->A1_VEND    := cGet1	
+					SA1->A1_ZONA    := cGet4
+					SA1->A1_FREVIS := cGet5
 					MSUNLOCK()
 				EndIf
 				SA1->(DBCLOSEAREA())				
@@ -315,6 +325,18 @@ IF Len(aRecSel) > 0
 				EndIf
 				DA7->(DBCLOSEAREA())				
 								
+			ElseIf	nRadMenu1 == 5
+
+				
+				dbSelectArea("SA1")
+				dbSetOrder(1)
+				If dbSeek(xFilial("SA1") + aRecSel[nX][2]  + aRecSel[nX][3] )
+					RECLOCK("SA1",.F.)
+					SA1->A1_FREVIS   := cGet5
+					MSUNLOCK()
+				EndIf
+				SA1->(DBCLOSEAREA())	
+
 			EndIf
 		Next nX
 	EndIf
@@ -365,7 +387,7 @@ RETURN
 | Uso | Curso de ADVPL |
 +-----------------------------------------------------------------------------
 /*/
-User Function lVldOpc(_nOpcRd)
+User Function lVldOpc(_nOpcRd,_cOpGet)
 Local lRet := .F.
 
 If _nOpcRd > 0
@@ -373,6 +395,11 @@ If _nOpcRd > 0
 Else
 	MsgAlert("Selecione uma das Opções de atualização... ","A T E N Ç Ã O")
 EndIF
+
+If (_nOpcRd == 5 .Or. _nOpcRd == 4) .And.  Empty(_cOpGet)
+	lRet := .F.
+	MsgAlert("Atenção! Informar Frequencia de Visita!","A T E N Ç Ã O")
+EndIf
 
 Return(lRet)
 
@@ -392,6 +419,26 @@ If ExistCpo("DA5", _cVend,2)
 	lRet := .T.
 Else
 	MsgAlert("Atenção! Vendedor não vinculado a uma ZONA de atendimento!","A T E N Ç Ã O")
+EndIf
+
+Return(lRet)
+
+/*/
++-----------------------------------------------------------------------------
+| Programa | LimpaMarca | Autor | ARNALDO RAYMUNDO JR. | Data | |
++-----------------------------------------------------------------------------
+| Desc. | Função utilizada para demonstrar o uso do recurso da MarkBrowse|
++-----------------------------------------------------------------------------
+| Uso | Curso de ADVPL |
++-----------------------------------------------------------------------------
+/*/
+User Function lVldFreV(_cFreV)
+Local lRet := .F.
+
+If _cFreV $ "S/P/M/I"
+	lRet := .T.
+Else
+	MsgAlert("Atenção! Informar Frequencia de Visita!","A T E N Ç Ã O")
 EndIf
 
 Return(lRet)
