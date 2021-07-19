@@ -22,6 +22,10 @@
 			"args": [],
 			"label": "SIGAADV",
 			"description": ""
+		},
+		{
+			"label": "SIGAADV",
+			"description": "<nil>"
 		}
 	],
 	"lastProgramExecuted": "SIGAADV"
